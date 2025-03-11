@@ -95,12 +95,8 @@ const DonationFrequencyModal: React.FC<DonationFrequencyModalProps> = ({
           {/* Header */}
           <div className="text-center mb-6">
             <h3 className="text-2xl font-bold text-gray-900 mb-2">
-              {language === 'hi' ? 'आपका प्रभाव बनाएं' : 'आपका प्रभाव बनाएं'} 
-              <span className="text-orange-600">({t('modal.title')})</span>
+              {t('modal.title')}
             </h3>
-            <p className="mt-2 text-gray-600">
-              {language === 'hi' ? 'एक छोटा मासिक दान दीर्घकालिक प्रभाव बनाता है और भविष्य की योजना बनाने में हमारी मदद करता है।' : ''}
-            </p>
             <p className="text-sm text-gray-600">
               {t('modal.subtitle')}
             </p>
@@ -114,8 +110,7 @@ const DonationFrequencyModal: React.FC<DonationFrequencyModalProps> = ({
                 <HandHeart size={24} />
               </div>
               <h4 className="text-lg font-bold mb-1">
-                {language === 'hi' ? 'मासिक सेवा' : 'मासिक सेवा'} 
-                <span className="text-sm">({t('modal.monthly')})</span>
+                {t('modal.monthly')}
               </h4>
               <p className="text-sm text-gray-600 text-center mb-1">
                 {t('modal.monthly.desc')}
@@ -138,8 +133,7 @@ const DonationFrequencyModal: React.FC<DonationFrequencyModalProps> = ({
                 <Calendar size={24} />
               </div>
               <h4 className="text-lg font-bold mb-1">
-                {language === 'hi' ? 'एक बार दान' : 'एक बार दान'} 
-                <span className="text-sm">({t('modal.onetime')})</span>
+                {t('modal.onetime')}
               </h4>
               <p className="text-sm text-gray-600 text-center mb-1">
                 {t('modal.onetime.desc')}
@@ -159,9 +153,7 @@ const DonationFrequencyModal: React.FC<DonationFrequencyModalProps> = ({
           
           {/* Footer note */}
           <p className="text-center text-sm text-gray-500 mt-4">
-            {language === 'hi' ? 'आप किसी भी समय अपना मासिक दान रद्द कर सकते हैं।' : ''}
-            <br />
-            <span className="text-xs">{t('modal.cancel')}</span>
+            {t('modal.cancel')}
           </p>
         </div>
       </div>

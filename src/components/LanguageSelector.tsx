@@ -13,12 +13,13 @@ const LanguageSelector: React.FC<LanguageSelectorProps> = ({ className }) => {
 
   return (
     <div className={cn("relative flex items-center", className)}>
-      <div className="flex items-center space-x-1 border rounded-lg px-2 py-1 text-sm hover:bg-gray-50 cursor-pointer group">
+      <div className="flex items-center space-x-1 border rounded-lg px-2 py-1 text-sm hover:bg-gray-50 cursor-pointer group transition-all duration-300">
         <GlobeIcon size={14} className="text-gray-500 group-hover:text-orange-500" />
         <select
           value={language}
           onChange={(e) => setLanguage(e.target.value as 'en' | 'hi')}
           className="appearance-none bg-transparent outline-none cursor-pointer pr-4 text-gray-700"
+          aria-label="Select language"
         >
           <option value="en">English</option>
           <option value="hi">हिंदी</option>
