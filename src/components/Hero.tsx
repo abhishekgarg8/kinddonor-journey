@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
-import { HandHeart, Sparkles } from 'lucide-react';
+import { HandHeart } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const ngoLogo = "/logo.svg"; // Placeholder for NGO logo
@@ -64,40 +64,10 @@ const Hero = () => {
             {t('hero.subtitle')}
           </span>
         </p>
-
-        {/* Reciprocity Gift Imagery */}
-        <div className={cn(
-          "flex justify-center mb-10 opacity-0 transform translate-y-4 w-full max-w-md",
-          loaded && "opacity-100 translate-y-0 transition-all duration-700 delay-300 ease-out"
-        )}>
-          <div className="relative p-6 bg-white rounded-2xl shadow-lg border border-orange-100 transform hover:scale-[1.02] transition-all duration-300">
-            <div className="absolute -top-3 -right-3">
-              <div className="bg-orange-500 text-white p-2 rounded-full shadow-md animate-float">
-                <Sparkles className="h-5 w-5" />
-              </div>
-            </div>
-            <div className="text-center">
-              <h3 className="font-medium text-lg text-orange-600 mb-2">{t('reciprocity.title')}</h3>
-              <div className="flex justify-center mb-4">
-                <img 
-                  src="/thank-you-gift.jpg" 
-                  alt="Thank You Gift" 
-                  className="h-36 w-auto rounded-lg object-cover shadow-sm"
-                  onError={(e) => {
-                    // Fallback if image doesn't load
-                    (e.target as HTMLImageElement).src = 'https://via.placeholder.com/300x200?text=Thank+You';
-                  }}
-                />
-              </div>
-              <p className="text-sm text-gray-600 mb-3">{t('reciprocity.message')}</p>
-              <div className="text-xs text-gray-500 italic">{t('reciprocity.impact')}</div>
-            </div>
-          </div>
-        </div>
         
         <div className={cn(
           "opacity-0 transform translate-y-4",
-          loaded && "opacity-100 translate-y-0 transition-all duration-700 delay-400 ease-out"
+          loaded && "opacity-100 translate-y-0 transition-all duration-700 delay-300 ease-out"
         )}>
           <div className="glass rounded-2xl p-1.5 shadow-lg bg-gradient-to-r from-orange-500/10 to-amber-500/10 backdrop-blur-sm">
             <button
