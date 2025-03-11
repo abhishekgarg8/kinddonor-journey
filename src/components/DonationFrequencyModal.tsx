@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
-import { Calendar, CalendarCheck } from 'lucide-react';
+import { Calendar, CalendarCheck, IndianRupee, HandHeart } from 'lucide-react';
 
 interface DonationFrequencyModalProps {
   isOpen: boolean;
@@ -71,7 +71,7 @@ const DonationFrequencyModal: React.FC<DonationFrequencyModalProps> = ({
     >
       <div
         className={cn(
-          "bg-[#EDF5FB] max-w-md w-full rounded-xl shadow-xl overflow-hidden",
+          "bg-[#FFF7ED] max-w-md w-full rounded-xl shadow-xl overflow-hidden border-2 border-[#F97316]/20",
           isClosing ? "animate-fade-out scale-95" : "animate-scale-in"
         )}
       >
@@ -88,58 +88,68 @@ const DonationFrequencyModal: React.FC<DonationFrequencyModalProps> = ({
           
           {/* Header */}
           <div className="text-center mb-6">
-            <h3 className="text-2xl font-bold text-gray-900">Make your impact sustainable</h3>
-            <p className="mt-2 text-gray-600">
-              A small monthly gift creates a lasting impact and helps us plan for the future.
+            <div className="flex justify-center mb-3">
+              <div className="w-16 h-1 bg-[#F97316] rounded-full"></div>
+            </div>
+            <h3 className="text-2xl font-bold text-gray-900">सतत प्रभाव बनाएं</h3>
+            <p className="text-sm text-gray-600 mt-1">(Make your impact sustainable)</p>
+            <p className="mt-3 text-gray-600">
+              A small monthly seva creates lasting impact and helps us plan for the future.
             </p>
           </div>
           
           {/* Options Grid */}
           <div className="grid grid-cols-2 gap-4 mb-4">
             {/* Monthly Option */}
-            <div className="bg-white p-5 rounded-lg shadow-sm flex flex-col items-center">
-              <div className="w-12 h-12 mb-4 bg-blue-100 rounded-full flex items-center justify-center text-blue-500">
-                <Calendar size={24} />
+            <div className="bg-white p-5 rounded-lg shadow-sm flex flex-col items-center border border-[#F97316]/20">
+              <div className="w-12 h-12 mb-4 bg-[#FFEDD5] rounded-full flex items-center justify-center text-[#F97316]">
+                <HandHeart size={24} />
               </div>
-              <h4 className="text-lg font-bold mb-1">Monthly Donation</h4>
+              <h4 className="text-lg font-bold mb-1">Monthly Seva</h4>
               <p className="text-sm text-gray-600 text-center mb-1">
                 Support our work every month with ₹{amountValue}
               </p>
-              <p className="text-xl font-bold text-blue-500 mb-4">
+              <p className="text-xl font-bold text-[#F97316] mb-4">
                 ₹{amountValue}/month
               </p>
               <button
                 onClick={() => onChoose('monthly')}
-                className="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg transition-colors"
+                className="w-full bg-[#F97316] hover:bg-[#EA580C] text-white py-2 px-4 rounded-lg transition-colors"
               >
-                Donate Monthly
+                <span className="flex items-center justify-center gap-2">
+                  <IndianRupee size={16} />
+                  Donate Monthly
+                </span>
               </button>
             </div>
             
             {/* One-time Option */}
-            <div className="bg-white p-5 rounded-lg shadow-sm flex flex-col items-center">
-              <div className="w-12 h-12 mb-4 bg-blue-100 rounded-full flex items-center justify-center text-blue-500">
+            <div className="bg-white p-5 rounded-lg shadow-sm flex flex-col items-center border border-[#F97316]/10">
+              <div className="w-12 h-12 mb-4 bg-[#FFEDD5] rounded-full flex items-center justify-center text-[#F97316]">
                 <CalendarCheck size={24} />
               </div>
-              <h4 className="text-lg font-bold mb-1">One-time Donation</h4>
+              <h4 className="text-lg font-bold mb-1">One-time Seva</h4>
               <p className="text-sm text-gray-600 text-center mb-1">
                 Make a single donation today
               </p>
-              <p className="text-xl font-bold text-blue-500 mb-4">
+              <p className="text-xl font-bold text-[#F97316] mb-4">
                 ₹{amountValue}
               </p>
               <button
                 onClick={() => onChoose('one-time')}
-                className="w-full border border-blue-500 text-blue-500 hover:bg-blue-50 py-2 px-4 rounded-lg transition-colors"
+                className="w-full border border-[#F97316] text-[#F97316] hover:bg-[#FFEDD5] py-2 px-4 rounded-lg transition-colors"
               >
-                Donate Once
+                <span className="flex items-center justify-center gap-2">
+                  <IndianRupee size={16} />
+                  Donate Once
+                </span>
               </button>
             </div>
           </div>
           
           {/* Footer note */}
           <p className="text-center text-sm text-gray-500 mt-4">
-            You can cancel your monthly donation at any time.
+            आप कभी भी अपना मासिक दान रद्द कर सकते हैं | (You can cancel your monthly donation at any time.)
           </p>
         </div>
       </div>
