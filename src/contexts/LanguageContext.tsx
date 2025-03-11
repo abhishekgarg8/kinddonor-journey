@@ -25,6 +25,13 @@ const translations = {
     'hero.subtitle': 'Your contribution helps us continue our mission to provide support to those in need.',
     'hero.button': 'Donate Now',
     
+    // Certificate/Badge
+    'certificate.title': 'Thank you for your generosity!',
+    'certificate.subtitle': 'You are already a hero to us!',
+    'certificate.message': 'Your kindness transforms lives.',
+    'certificate.special': 'We\'ve reserved a spot on our Wall of Heroes just for you!',
+    'reciprocity.message': 'Your support means everything—receive your badge of kindness today!',
+    
     // Donation section
     'donation.why': 'Why Donate?',
     'donation.title': 'Your Support Makes a Difference',

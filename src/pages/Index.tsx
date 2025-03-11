@@ -112,7 +112,7 @@ const Index = () => {
         </div>
       </section>
       
-      {/* Simplified Footer */}
+      {/* Simple Copyright Footer */}
       <footer className="bg-gray-900 text-white py-6 relative">
         <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-orange-500 to-amber-500"></div>
         <div className="container mx-auto px-4 md:px-6 relative">
