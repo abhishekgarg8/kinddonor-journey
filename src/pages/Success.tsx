@@ -3,7 +3,9 @@ import React, { useEffect, useState } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import ReceiptPreview from '@/components/ReceiptPreview';
 import { cn } from '@/lib/utils';
-import { CheckCircle2, ArrowLeft, Printer, Home, HandHeart } from 'lucide-react';
+import { CheckCircle2, ArrowLeft, Printer, Home } from 'lucide-react';
+import LanguageSelector from '@/components/LanguageSelector';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Success = () => {
   const location = useLocation();
@@ -11,6 +13,7 @@ const Success = () => {
   const frequency = queryParams.get('frequency') as 'one-time' | 'monthly' || 'one-time';
   
   const [isVisible, setIsVisible] = useState(false);
+  const { t, language } = useLanguage();
   
   // Retrieve mock data from localStorage (would be from API in real app)
   const mockData = {
@@ -47,12 +50,13 @@ const Success = () => {
               </Link>
             </div>
             <div className="flex items-center space-x-1">
+              <LanguageSelector className="mr-2" />
               <Link 
                 to="/" 
                 className="px-4 py-2 text-sm text-gray-700 hover:text-orange-600 rounded-lg transition-colors flex items-center"
               >
                 <Home size={16} className="mr-1" />
-                Home
+                {t('nav.home')}
               </Link>
             </div>
           </div>
@@ -68,16 +72,20 @@ const Success = () => {
             <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-orange-100 text-orange-600 mb-4">
               <CheckCircle2 className="h-10 w-10" />
             </div>
-            <h1 className="text-3xl font-bold mb-2 text-gray-900">धन्यवाद! <span className="text-orange-600">(Thank You!)</span></h1>
+            <h1 className="text-3xl font-bold mb-2 text-gray-900">
+              {language === 'hi' ? 'धन्यवाद!' : 'धन्यवाद!'} 
+              <span className="text-orange-600">({t('success.title')})</span>
+            </h1>
             <p className="text-gray-600">
-              {frequency === 'monthly' 
-                ? 'आपका मासिक दान सफलतापूर्वक शुरू हो गया है।' 
-                : 'आपका एकल दान सफलतापूर्वक प्रसंस्करित किया गया है।'}
+              {language === 'hi' 
+                ? (frequency === 'monthly' 
+                  ? 'आपका मासिक दान सफलतापूर्वक शुरू हो गया है।' 
+                  : 'आपका एकल दान सफलतापूर्वक प्रसंस्करित किया गया है।')
+                : ''
+              }
             </p>
             <p className="text-sm text-gray-600">
-              {frequency === 'monthly' 
-                ? 'Your monthly donation has been set up successfully.' 
-                : 'Your one-time donation has been processed successfully.'}
+              {t('success.desc')}
             </p>
           </div>
           
@@ -94,10 +102,10 @@ const Success = () => {
           
           <div className="text-center space-y-4">
             <p className="text-gray-600">
-              हमने आपको एक रसीद ईमेल की है। आपकी उदारता के लिए धन्यवाद!
+              {language === 'hi' ? 'हमने आपको एक रसीद ईमेल की है। आपकी उदारता के लिए धन्यवाद!' : ''}
             </p>
             <p className="text-sm text-gray-600">
-              We've sent a receipt to your email. Thank you for your generosity!
+              {t('success.receipt')}
             </p>
             
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-6">
@@ -106,7 +114,7 @@ const Success = () => {
                 className="px-6 py-3 bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-medium rounded-xl transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] text-center shadow-sm flex items-center justify-center w-full sm:w-auto"
               >
                 <ArrowLeft size={18} className="mr-2" />
-                Return Home
+                {t('success.return')}
               </Link>
               
               <button 
@@ -114,7 +122,7 @@ const Success = () => {
                 onClick={() => window.print()}
               >
                 <Printer size={18} className="mr-2" />
-                Print Receipt
+                {t('success.print')}
               </button>
             </div>
           </div>
@@ -123,7 +131,7 @@ const Success = () => {
       
       {/* Footer */}
       <footer className="py-6 text-center text-gray-500 text-sm border-t border-orange-100">
-        <p>&copy; {new Date().getFullYear()} सेवा संस्था (Seva Sanstha). All rights reserved.</p>
+        <p>&copy; {new Date().getFullYear()} सेवा संस्था (Seva Sanstha). {t('footer.rights')}</p>
       </footer>
     </div>
   );

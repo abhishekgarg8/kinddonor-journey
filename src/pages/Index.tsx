@@ -2,10 +2,14 @@
 import React from 'react';
 import Hero from '@/components/Hero';
 import DonationForm from '@/components/DonationForm';
+import LanguageSelector from '@/components/LanguageSelector';
 import { Link } from 'react-router-dom';
 import { HandHeart, Sparkles, IndianRupee, Shield, ReceiptText, Users } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Index = () => {
+  const { t } = useLanguage();
+  
   return (
     <div className="min-h-screen bg-gradient-to-b from-orange-50 to-amber-50">
       {/* Navigation Bar */}
@@ -19,15 +23,16 @@ const Index = () => {
               </a>
             </div>
             <div className="flex items-center space-x-1">
+              <LanguageSelector className="mr-2" />
               <Link 
                 to="/dashboard" 
                 className="px-4 py-2 text-sm text-gray-700 hover:text-orange-600 rounded-lg transition-colors"
               >
-                Admin Dashboard
+                {t('nav.admin')}
               </Link>
               <button className="px-4 py-2 bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white text-sm font-medium rounded-lg transition-colors shadow-sm flex items-center">
                 <HandHeart className="mr-1" size={16} />
-                Donate
+                {t('nav.donate')}
               </button>
             </div>
           </div>
@@ -49,12 +54,11 @@ const Index = () => {
               <div>
                 <div className="text-sm text-orange-600 font-medium mb-2 flex items-center">
                   <Sparkles size={16} className="mr-1" />
-                  दान क्यों करें? (Why Donate?)
+                  {t('donation.why')}
                 </div>
-                <h2 className="text-3xl font-bold mb-4 text-gray-900">आपका समर्थन अंतर लाता है</h2>
+                <h2 className="text-3xl font-bold mb-4 text-gray-900">{t('donation.title')}</h2>
                 <p className="text-gray-600">
-                  When you donate, you're directly contributing to our mission of helping those in need.
-                  Every rupee makes a difference in someone's life.
+                  {t('donation.desc')}
                 </p>
               </div>
               
@@ -63,9 +67,9 @@ const Index = () => {
                   <div className="w-10 h-10 bg-orange-100 text-orange-600 rounded-lg flex items-center justify-center mb-4">
                     <IndianRupee size={20} />
                   </div>
-                  <h3 className="text-lg font-medium mb-2">Tax Benefits</h3>
+                  <h3 className="text-lg font-medium mb-2">{t('donation.tax')}</h3>
                   <p className="text-gray-600 text-sm">
-                    Your donations are eligible for tax benefits under Section 80G of the Income Tax Act.
+                    {t('donation.tax.desc')}
                   </p>
                 </div>
                 
@@ -73,9 +77,9 @@ const Index = () => {
                   <div className="w-10 h-10 bg-orange-100 text-orange-600 rounded-lg flex items-center justify-center mb-4">
                     <Shield size={20} />
                   </div>
-                  <h3 className="text-lg font-medium mb-2">100% Secure</h3>
+                  <h3 className="text-lg font-medium mb-2">{t('donation.secure')}</h3>
                   <p className="text-gray-600 text-sm">
-                    Your payment information is completely secure with bank-grade encryption.
+                    {t('donation.secure.desc')}
                   </p>
                 </div>
                 
@@ -83,9 +87,9 @@ const Index = () => {
                   <div className="w-10 h-10 bg-orange-100 text-orange-600 rounded-lg flex items-center justify-center mb-4">
                     <ReceiptText size={20} />
                   </div>
-                  <h3 className="text-lg font-medium mb-2">Instant Receipt</h3>
+                  <h3 className="text-lg font-medium mb-2">{t('donation.receipt')}</h3>
                   <p className="text-gray-600 text-sm">
-                    Receive your donation receipt immediately via email after your payment.
+                    {t('donation.receipt.desc')}
                   </p>
                 </div>
                 
@@ -93,9 +97,9 @@ const Index = () => {
                   <div className="w-10 h-10 bg-orange-100 text-orange-600 rounded-lg flex items-center justify-center mb-4">
                     <Users size={20} />
                   </div>
-                  <h3 className="text-lg font-medium mb-2">Impact Lives</h3>
+                  <h3 className="text-lg font-medium mb-2">{t('donation.impact')}</h3>
                   <p className="text-gray-600 text-sm">
-                    Your generosity directly impacts the lives of those we serve in our community.
+                    {t('donation.impact.desc')}
                   </p>
                 </div>
               </div>
@@ -121,7 +125,7 @@ const Index = () => {
                 (Seva Sanstha)
               </h3>
               <p className="text-gray-400 mb-4">
-                Our mission is to help those in need and create a better world for everyone.
+                {t('footer.mission')}
               </p>
               <div className="flex space-x-4">
                 <a href="#" className="text-gray-400 hover:text-orange-400 transition-colors">
@@ -138,7 +142,7 @@ const Index = () => {
             </div>
             
             <div>
-              <h3 className="text-lg font-medium mb-4">Contact Us</h3>
+              <h3 className="text-lg font-medium mb-4">{t('footer.contact')}</h3>
               <p className="text-gray-400 mb-2">
                 123 NGO Street, New Delhi, India
               </p>
@@ -151,7 +155,7 @@ const Index = () => {
             </div>
             
             <div>
-              <h3 className="text-lg font-medium mb-4">Quick Links</h3>
+              <h3 className="text-lg font-medium mb-4">{t('footer.links')}</h3>
               <ul className="space-y-2">
                 <li>
                   <a href="#" className="text-gray-400 hover:text-orange-400 transition-colors flex items-center">
@@ -183,7 +187,7 @@ const Index = () => {
           
           <div className="border-t border-gray-800 mt-8 pt-8 text-center">
             <p className="text-gray-400 text-sm">
-              &copy; {new Date().getFullYear()} सेवा संस्था (Seva Sanstha). All rights reserved.
+              &copy; {new Date().getFullYear()} सेवा संस्था (Seva Sanstha). {t('footer.rights')}
             </p>
           </div>
         </div>

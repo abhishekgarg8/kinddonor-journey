@@ -1,12 +1,14 @@
 
 import React, { useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
-import { HandHeart, IndianRupee } from 'lucide-react';
+import { HandHeart } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const ngoLogo = "/logo.svg"; // Placeholder for NGO logo
 
 const Hero = () => {
   const [loaded, setLoaded] = useState(false);
+  const { t, language } = useLanguage();
 
   useEffect(() => {
     // Trigger animation after component mounts
@@ -47,9 +49,9 @@ const Hero = () => {
           "text-center font-bold text-4xl md:text-5xl lg:text-6xl mb-6 bg-clip-text text-transparent bg-gradient-to-r from-orange-600 to-amber-600 opacity-0 transform translate-y-4",
           loaded && "opacity-100 translate-y-0 transition-all duration-700 delay-100 ease-out"
         )}>
-          सेवा के माध्यम से परिवर्तन
+          {language === 'hi' ? 'सेवा के माध्यम से परिवर्तन' : 'सेवा के माध्यम से परिवर्तन'}
           <span className="block text-2xl md:text-3xl lg:text-4xl mt-2 text-gray-700 font-medium">
-            Transform Lives Through Service
+            {t('hero.title')}
           </span>
         </h1>
         
@@ -57,9 +59,9 @@ const Hero = () => {
           "text-center text-gray-600 text-lg md:text-xl max-w-2xl mb-10 opacity-0 transform translate-y-4",
           loaded && "opacity-100 translate-y-0 transition-all duration-700 delay-200 ease-out"
         )}>
-          आपका योगदान जरूरतमंदों की सहायता के लिए हमारे मिशन को जारी रखने में मदद करता है।
-          <span className="block mt-2">
-            Your contribution helps us continue our mission to provide support to those in need.
+          {language === 'hi' ? 'आपका योगदान जरूरतमंदों की सहायता के लिए हमारे मिशन को जारी रखने में मदद करता है।' : ''}
+          <span className={language === 'hi' ? 'hidden' : 'block'}>
+            {t('hero.subtitle')}
           </span>
         </p>
         
@@ -73,7 +75,7 @@ const Hero = () => {
               className="px-8 py-4 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-medium text-lg transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] flex items-center gap-2 shadow-md"
             >
               <HandHeart className="mr-1" size={20} />
-              दान करें (Donate Now)
+              {language === 'hi' ? 'दान करें' : 'दान करें'} ({t('hero.button')})
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M8 1L15 8L8 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 <path d="M1 8H15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>

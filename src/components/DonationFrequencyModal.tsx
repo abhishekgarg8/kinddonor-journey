@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
 import { Calendar, HandHeart, IndianRupee } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 interface DonationFrequencyModalProps {
   isOpen: boolean;
@@ -18,6 +19,7 @@ const DonationFrequencyModal: React.FC<DonationFrequencyModalProps> = ({
 }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
+  const { t, language } = useLanguage();
   
   // Handle animation timing
   useEffect(() => {
@@ -92,12 +94,15 @@ const DonationFrequencyModal: React.FC<DonationFrequencyModalProps> = ({
           
           {/* Header */}
           <div className="text-center mb-6">
-            <h3 className="text-2xl font-bold text-gray-900 mb-2">आपका प्रभाव बनाएं <span className="text-orange-600">(Make Your Impact)</span></h3>
+            <h3 className="text-2xl font-bold text-gray-900 mb-2">
+              {language === 'hi' ? 'आपका प्रभाव बनाएं' : 'आपका प्रभाव बनाएं'} 
+              <span className="text-orange-600">({t('modal.title')})</span>
+            </h3>
             <p className="mt-2 text-gray-600">
-              एक छोटा मासिक दान दीर्घकालिक प्रभाव बनाता है और भविष्य की योजना बनाने में हमारी मदद करता है।
+              {language === 'hi' ? 'एक छोटा मासिक दान दीर्घकालिक प्रभाव बनाता है और भविष्य की योजना बनाने में हमारी मदद करता है।' : ''}
             </p>
             <p className="text-sm text-gray-600">
-              A small monthly gift creates a lasting impact and helps us plan for the future.
+              {t('modal.subtitle')}
             </p>
           </div>
           
@@ -108,9 +113,12 @@ const DonationFrequencyModal: React.FC<DonationFrequencyModalProps> = ({
               <div className="w-12 h-12 mb-4 bg-orange-100 rounded-full flex items-center justify-center text-orange-500">
                 <HandHeart size={24} />
               </div>
-              <h4 className="text-lg font-bold mb-1">मासिक सेवा <span className="text-sm">(Monthly)</span></h4>
+              <h4 className="text-lg font-bold mb-1">
+                {language === 'hi' ? 'मासिक सेवा' : 'मासिक सेवा'} 
+                <span className="text-sm">({t('modal.monthly')})</span>
+              </h4>
               <p className="text-sm text-gray-600 text-center mb-1">
-                Support our work every month
+                {t('modal.monthly.desc')}
               </p>
               <div className="flex items-center justify-center text-xl font-bold text-orange-600 mb-4">
                 <IndianRupee size={18} />
@@ -120,7 +128,7 @@ const DonationFrequencyModal: React.FC<DonationFrequencyModalProps> = ({
                 onClick={() => onChoose('monthly')}
                 className="w-full bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white py-2 px-4 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-md"
               >
-                मासिक दान करें
+                {t('modal.monthly.button')}
               </button>
             </div>
             
@@ -129,9 +137,12 @@ const DonationFrequencyModal: React.FC<DonationFrequencyModalProps> = ({
               <div className="w-12 h-12 mb-4 bg-gray-100 rounded-full flex items-center justify-center text-gray-600">
                 <Calendar size={24} />
               </div>
-              <h4 className="text-lg font-bold mb-1">एक बार दान <span className="text-sm">(One-time)</span></h4>
+              <h4 className="text-lg font-bold mb-1">
+                {language === 'hi' ? 'एक बार दान' : 'एक बार दान'} 
+                <span className="text-sm">({t('modal.onetime')})</span>
+              </h4>
               <p className="text-sm text-gray-600 text-center mb-1">
-                Make a single donation today
+                {t('modal.onetime.desc')}
               </p>
               <div className="flex items-center justify-center text-xl font-bold text-gray-600 mb-4">
                 <IndianRupee size={18} />
@@ -141,16 +152,16 @@ const DonationFrequencyModal: React.FC<DonationFrequencyModalProps> = ({
                 onClick={() => onChoose('one-time')}
                 className="w-full border border-orange-500 text-orange-500 hover:bg-orange-50 py-2 px-4 rounded-lg transition-colors"
               >
-                एक बार दान करें
+                {t('modal.onetime.button')}
               </button>
             </div>
           </div>
           
           {/* Footer note */}
           <p className="text-center text-sm text-gray-500 mt-4">
-            आप किसी भी समय अपना मासिक दान रद्द कर सकते हैं।
+            {language === 'hi' ? 'आप किसी भी समय अपना मासिक दान रद्द कर सकते हैं।' : ''}
             <br />
-            <span className="text-xs">You can cancel your monthly donation at any time.</span>
+            <span className="text-xs">{t('modal.cancel')}</span>
           </p>
         </div>
       </div>

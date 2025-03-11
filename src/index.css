@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -103,6 +102,51 @@
   transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
+}
+
+/* Language switch animation */
+.language-fade-enter {
+  opacity: 0;
+}
+.language-fade-enter-active {
+  opacity: 1;
+  transition: opacity 300ms ease-in;
+}
+.language-fade-exit {
+  opacity: 1;
+}
+.language-fade-exit-active {
+  opacity: 0;
+  transition: opacity 300ms ease-out;
+}
+
+/* Language selector styles */
+.language-selector {
+  position: relative;
+  cursor: pointer;
+}
+
+.language-selector:hover .language-icon {
+  transform: rotate(10deg);
+}
+
+.language-selector select {
+  appearance: none;
+  padding-right: 1.5rem;
+}
+
+.language-selector::after {
+  content: "";
+  position: absolute;
+  right: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0.5rem;
+  height: 0.5rem;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: translateY(-50%) rotate(45deg);
+  pointer-events: none;
 }
 
 .glass {

@@ -3,8 +3,12 @@ import React from 'react';
 import AdminDashboard from '@/components/AdminDashboard';
 import { Link } from 'react-router-dom';
 import { LogOut, Home } from 'lucide-react';
+import LanguageSelector from '@/components/LanguageSelector';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Dashboard = () => {
+  const { t } = useLanguage();
+  
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Navigation Bar */}
@@ -19,16 +23,17 @@ const Dashboard = () => {
               </Link>
             </div>
             <div className="flex items-center space-x-2">
+              <LanguageSelector className="mr-2" />
               <Link 
                 to="/" 
                 className="px-4 py-2 text-sm text-gray-700 hover:text-orange-600 rounded-lg transition-colors flex items-center"
               >
                 <Home size={16} className="mr-1" />
-                Home
+                {t('nav.home')}
               </Link>
               <button className="px-4 py-2 bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white text-sm font-medium rounded-lg transition-colors shadow-sm flex items-center">
                 <LogOut size={16} className="mr-1" />
-                Logout
+                {t('nav.logout')}
               </button>
             </div>
           </div>
@@ -39,14 +44,14 @@ const Dashboard = () => {
       <div className="container mx-auto px-4 py-8">
         <h1 className="text-2xl font-bold mb-6 text-gray-900 flex items-center">
           <span className="text-orange-600 mr-2">प्रशासन डैशबोर्ड</span>
-          (Admin Dashboard)
+          ({t('dashboard.title')})
         </h1>
         <AdminDashboard />
       </div>
       
       {/* Footer */}
       <footer className="py-6 text-center text-gray-500 text-sm border-t border-gray-200 mt-8">
-        <p>&copy; {new Date().getFullYear()} सेवा संस्था (Seva Sanstha). All rights reserved.</p>
+        <p>&copy; {new Date().getFullYear()} सेवा संस्था (Seva Sanstha). {t('footer.rights')}</p>
       </footer>
     </div>
   );
