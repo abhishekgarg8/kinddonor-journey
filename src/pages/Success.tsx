@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import ReceiptPreview from '@/components/ReceiptPreview';
 import { cn } from '@/lib/utils';
+import { CheckCircle2, ArrowLeft, Printer, Home, HandHeart } from 'lucide-react';
 
 const Success = () => {
   const location = useLocation();
@@ -30,21 +31,27 @@ const Success = () => {
   }, []);
   
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white flex flex-col">
+    <div className="min-h-screen bg-gradient-to-b from-orange-50 to-amber-50 flex flex-col">
+      {/* Decorative elements */}
+      <div className="absolute top-40 left-10 w-64 h-64 bg-orange-500/10 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-20 right-10 w-80 h-80 bg-amber-500/10 rounded-full blur-3xl"></div>
+      
       {/* Navigation Bar */}
-      <nav className="sticky top-0 z-40 backdrop-blur-md bg-white/80 shadow-sm">
+      <nav className="sticky top-0 z-40 backdrop-blur-md bg-white/80 shadow-sm border-b border-orange-100">
         <div className="container mx-auto px-4 md:px-6">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
-              <Link to="/" className="text-blue-600 font-medium text-lg">
-                NGO Name
+              <Link to="/" className="text-orange-600 font-medium text-lg flex items-center">
+                <img src="/logo.svg" alt="Logo" className="h-8 w-8 mr-2" />
+                <span className="font-bold">सेवा संस्था</span>
               </Link>
             </div>
             <div className="flex items-center space-x-1">
               <Link 
                 to="/" 
-                className="px-4 py-2 text-sm text-gray-700 hover:text-blue-600 rounded-lg transition-colors"
+                className="px-4 py-2 text-sm text-gray-700 hover:text-orange-600 rounded-lg transition-colors flex items-center"
               >
+                <Home size={16} className="mr-1" />
                 Home
               </Link>
             </div>
@@ -58,20 +65,23 @@ const Success = () => {
           isVisible && "opacity-100 translate-y-0 transition-all duration-500"
         )}>
           <div className="text-center mb-8">
-            <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-green-100 text-green-600 mb-4">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-              </svg>
+            <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-orange-100 text-orange-600 mb-4">
+              <CheckCircle2 className="h-10 w-10" />
             </div>
-            <h1 className="text-3xl font-bold mb-2 text-gray-900">Thank You!</h1>
+            <h1 className="text-3xl font-bold mb-2 text-gray-900">धन्यवाद! <span className="text-orange-600">(Thank You!)</span></h1>
             <p className="text-gray-600">
+              {frequency === 'monthly' 
+                ? 'आपका मासिक दान सफलतापूर्वक शुरू हो गया है।' 
+                : 'आपका एकल दान सफलतापूर्वक प्रसंस्करित किया गया है।'}
+            </p>
+            <p className="text-sm text-gray-600">
               {frequency === 'monthly' 
                 ? 'Your monthly donation has been set up successfully.' 
                 : 'Your one-time donation has been processed successfully.'}
             </p>
           </div>
           
-          <div className="mb-8">
+          <div className="mb-8 bg-white rounded-xl shadow-sm border border-orange-100 p-1">
             <ReceiptPreview 
               name={mockData.name}
               amount={mockData.amount}
@@ -84,21 +94,26 @@ const Success = () => {
           
           <div className="text-center space-y-4">
             <p className="text-gray-600">
+              हमने आपको एक रसीद ईमेल की है। आपकी उदारता के लिए धन्यवाद!
+            </p>
+            <p className="text-sm text-gray-600">
               We've sent a receipt to your email. Thank you for your generosity!
             </p>
             
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-6">
               <Link 
                 to="/"
-                className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-xl transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] text-center"
+                className="px-6 py-3 bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-medium rounded-xl transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] text-center shadow-sm flex items-center justify-center w-full sm:w-auto"
               >
+                <ArrowLeft size={18} className="mr-2" />
                 Return Home
               </Link>
               
               <button 
-                className="px-6 py-3 bg-white border border-gray-200 hover:border-gray-300 text-gray-800 font-medium rounded-xl transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98]"
+                className="px-6 py-3 bg-white border border-gray-200 hover:border-gray-300 text-gray-800 font-medium rounded-xl transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center w-full sm:w-auto"
                 onClick={() => window.print()}
               >
+                <Printer size={18} className="mr-2" />
                 Print Receipt
               </button>
             </div>
@@ -107,8 +122,8 @@ const Success = () => {
       </div>
       
       {/* Footer */}
-      <footer className="py-6 text-center text-gray-500 text-sm">
-        <p>&copy; {new Date().getFullYear()} NGO Name. All rights reserved.</p>
+      <footer className="py-6 text-center text-gray-500 text-sm border-t border-orange-100">
+        <p>&copy; {new Date().getFullYear()} सेवा संस्था (Seva Sanstha). All rights reserved.</p>
       </footer>
     </div>
   );

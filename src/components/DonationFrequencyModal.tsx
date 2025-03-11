@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
-import { Calendar, CalendarCheck } from 'lucide-react';
+import { Calendar, HandHeart, IndianRupee } from 'lucide-react';
 
 interface DonationFrequencyModalProps {
   isOpen: boolean;
@@ -71,7 +71,7 @@ const DonationFrequencyModal: React.FC<DonationFrequencyModalProps> = ({
     >
       <div
         className={cn(
-          "bg-[#EDF5FB] max-w-md w-full rounded-xl shadow-xl overflow-hidden",
+          "bg-gradient-to-b from-orange-50 to-amber-50 max-w-md w-full rounded-xl shadow-xl overflow-hidden border border-orange-100",
           isClosing ? "animate-fade-out scale-95" : "animate-scale-in"
         )}
       >
@@ -86,10 +86,17 @@ const DonationFrequencyModal: React.FC<DonationFrequencyModalProps> = ({
             </svg>
           </button>
           
+          {/* Decorative elements - Rangoli-inspired pattern */}
+          <div className="absolute -top-12 -left-12 w-24 h-24 bg-orange-500/10 rounded-full"></div>
+          <div className="absolute -bottom-8 -right-8 w-16 h-16 bg-amber-500/10 rounded-full"></div>
+          
           {/* Header */}
           <div className="text-center mb-6">
-            <h3 className="text-2xl font-bold text-gray-900">Make your impact sustainable</h3>
+            <h3 className="text-2xl font-bold text-gray-900 mb-2">आपका प्रभाव बनाएं <span className="text-orange-600">(Make Your Impact)</span></h3>
             <p className="mt-2 text-gray-600">
+              एक छोटा मासिक दान दीर्घकालिक प्रभाव बनाता है और भविष्य की योजना बनाने में हमारी मदद करता है।
+            </p>
+            <p className="text-sm text-gray-600">
               A small monthly gift creates a lasting impact and helps us plan for the future.
             </p>
           </div>
@@ -97,49 +104,53 @@ const DonationFrequencyModal: React.FC<DonationFrequencyModalProps> = ({
           {/* Options Grid */}
           <div className="grid grid-cols-2 gap-4 mb-4">
             {/* Monthly Option */}
-            <div className="bg-white p-5 rounded-lg shadow-sm flex flex-col items-center">
-              <div className="w-12 h-12 mb-4 bg-blue-100 rounded-full flex items-center justify-center text-blue-500">
-                <Calendar size={24} />
+            <div className="bg-gradient-to-br from-white to-orange-50 p-5 rounded-lg shadow-sm flex flex-col items-center border border-orange-100">
+              <div className="w-12 h-12 mb-4 bg-orange-100 rounded-full flex items-center justify-center text-orange-500">
+                <HandHeart size={24} />
               </div>
-              <h4 className="text-lg font-bold mb-1">Monthly Donation</h4>
+              <h4 className="text-lg font-bold mb-1">मासिक सेवा <span className="text-sm">(Monthly)</span></h4>
               <p className="text-sm text-gray-600 text-center mb-1">
-                Support our work every month with ₹{amountValue}
+                Support our work every month
               </p>
-              <p className="text-xl font-bold text-blue-500 mb-4">
-                ₹{amountValue}/month
-              </p>
+              <div className="flex items-center justify-center text-xl font-bold text-orange-600 mb-4">
+                <IndianRupee size={18} />
+                <span>{amountValue}/month</span>
+              </div>
               <button
                 onClick={() => onChoose('monthly')}
-                className="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg transition-colors"
+                className="w-full bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white py-2 px-4 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-md"
               >
-                Donate Monthly
+                मासिक दान करें
               </button>
             </div>
             
             {/* One-time Option */}
-            <div className="bg-white p-5 rounded-lg shadow-sm flex flex-col items-center">
-              <div className="w-12 h-12 mb-4 bg-blue-100 rounded-full flex items-center justify-center text-blue-500">
-                <CalendarCheck size={24} />
+            <div className="bg-white p-5 rounded-lg shadow-sm flex flex-col items-center border border-gray-100">
+              <div className="w-12 h-12 mb-4 bg-gray-100 rounded-full flex items-center justify-center text-gray-600">
+                <Calendar size={24} />
               </div>
-              <h4 className="text-lg font-bold mb-1">One-time Donation</h4>
+              <h4 className="text-lg font-bold mb-1">एक बार दान <span className="text-sm">(One-time)</span></h4>
               <p className="text-sm text-gray-600 text-center mb-1">
                 Make a single donation today
               </p>
-              <p className="text-xl font-bold text-blue-500 mb-4">
-                ₹{amountValue}
-              </p>
+              <div className="flex items-center justify-center text-xl font-bold text-gray-600 mb-4">
+                <IndianRupee size={18} />
+                <span>{amountValue}</span>
+              </div>
               <button
                 onClick={() => onChoose('one-time')}
-                className="w-full border border-blue-500 text-blue-500 hover:bg-blue-50 py-2 px-4 rounded-lg transition-colors"
+                className="w-full border border-orange-500 text-orange-500 hover:bg-orange-50 py-2 px-4 rounded-lg transition-colors"
               >
-                Donate Once
+                एक बार दान करें
               </button>
             </div>
           </div>
           
           {/* Footer note */}
           <p className="text-center text-sm text-gray-500 mt-4">
-            You can cancel your monthly donation at any time.
+            आप किसी भी समय अपना मासिक दान रद्द कर सकते हैं।
+            <br />
+            <span className="text-xs">You can cancel your monthly donation at any time.</span>
           </p>
         </div>
       </div>

@@ -14,7 +14,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 210 100% 50%;
+    --primary: 24 100% 50%;
     --primary-foreground: 210 40% 98%;
 
     --secondary: 210 40% 96.1%;
@@ -46,7 +46,7 @@
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 210 100% 50%;
+    --primary: 24 100% 50%;
     --primary-foreground: 210 40% 98%;
 
     --secondary: 217.2 32.6% 17.5%;
@@ -158,6 +158,32 @@
   color: hsl(var(--primary));
 }
 
+/* Indian-inspired decorative elements */
+.rangoli-pattern {
+  position: relative;
+}
+
+.rangoli-pattern::before,
+.rangoli-pattern::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #FEC89A 0%, #F9844A 100%);
+  opacity: 0.6;
+}
+
+.rangoli-pattern::before {
+  top: -10px;
+  left: -10px;
+}
+
+.rangoli-pattern::after {
+  bottom: -10px;
+  right: -10px;
+}
+
 /* Smooth image loading */
 .image-loading {
   filter: blur(10px);
@@ -166,4 +192,23 @@
 
 .image-loaded {
   filter: blur(0);
+}
+
+/* Indian-inspired decorative divider */
+.diya-divider {
+  position: relative;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, #F9844A, transparent);
+}
+
+.diya-divider::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #F9844A, #F8961E);
 }
