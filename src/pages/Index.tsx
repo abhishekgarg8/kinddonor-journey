@@ -112,11 +112,28 @@ const Index = () => {
         </div>
       </section>
       
-      {/* Simple Copyright Footer */}
+      {/* Simple Copyright Footer with Links */}
       <footer className="bg-gray-900 text-white py-6 relative">
         <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-orange-500 to-amber-500"></div>
         <div className="container mx-auto px-4 md:px-6 relative">
-          <div className="text-center">
+          <div className="flex flex-col items-center">
+            <div className="flex flex-wrap justify-center gap-4 mb-4 text-sm text-gray-400">
+              <Link to="/terms" className="hover:text-orange-400 transition-colors">
+                {t('footer.terms')}
+              </Link>
+              <Link to="/privacy" className="hover:text-orange-400 transition-colors">
+                {t('footer.privacy')}
+              </Link>
+              <Link to="/refund" className="hover:text-orange-400 transition-colors">
+                {t('footer.refund')}
+              </Link>
+              <Link to="/shipping" className="hover:text-orange-400 transition-colors">
+                {t('footer.shipping')}
+              </Link>
+              <Link to="/contact" className="hover:text-orange-400 transition-colors">
+                {t('footer.contact')}
+              </Link>
+            </div>
             <p className="text-gray-400 text-sm">
               &copy; {new Date().getFullYear()} सेवा संस्था (Seva Sanstha). {t('footer.rights')}
             </p>
