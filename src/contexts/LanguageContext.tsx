@@ -1,3 +1,4 @@
+
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
 type Language = 'en' | 'hi';
@@ -46,14 +47,14 @@ const translations = {
     
     // Footer
     'footer.mission': 'Our mission is to help those in need and create a better world for everyone.',
-    'footer.contact': 'Contact Us',
+    'footer.contact.title': 'Contact Us',
     'footer.links': 'Quick Links',
     'footer.rights': 'All rights reserved.',
     'footer.terms': 'Terms and Conditions',
     'footer.privacy': 'Privacy Policy',
     'footer.refund': 'Cancellation and Refund',
     'footer.shipping': 'Shipping and Exchange',
-    'footer.contact': 'Contact Us',
+    'footer.contact.link': 'Contact Us',
     
     // Dashboard
     'dashboard.title': 'Admin Dashboard',
@@ -103,14 +104,14 @@ const translations = {
     
     // Footer
     'footer.mission': 'हमारा मिशन जरूरतमंदों की मदद करना और सभी के लिए एक बेहतर दुनिया बनाना है।',
-    'footer.contact': 'संपर्क करें',
+    'footer.contact.title': 'संपर्क करें',
     'footer.links': 'त्वरित लिंक',
     'footer.rights': 'सर्वाधिकार सुरक्षित।',
     'footer.terms': 'नियम और शर्तें',
     'footer.privacy': 'गोपनीयता नीति',
     'footer.refund': 'रद्दीकरण और वापसी',
     'footer.shipping': 'शिपिंग और विनिमय',
-    'footer.contact': 'संपर्क करें',
+    'footer.contact.link': 'संपर्क करें',
     
     // Dashboard
     'dashboard.title': 'प्रशासन डैशबोर्ड',

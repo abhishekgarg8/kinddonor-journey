@@ -74,7 +74,7 @@ const PageLayout: React.FC<PageLayoutProps> = ({ children, title }) => {
                 {t('footer.shipping')}
               </Link>
               <Link to="/contact" className="hover:text-orange-400 transition-colors">
-                {t('footer.contact')}
+                {t('footer.contact.link')}
               </Link>
             </div>
             <p className="text-gray-400 text-sm">
