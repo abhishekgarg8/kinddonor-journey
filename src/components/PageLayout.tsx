@@ -70,9 +70,6 @@ const PageLayout: React.FC<PageLayoutProps> = ({ children, title }) => {
               <Link to="/refund" className="hover:text-orange-400 transition-colors">
                 {t('footer.refund')}
               </Link>
-              <Link to="/shipping" className="hover:text-orange-400 transition-colors">
-                {t('footer.shipping')}
-              </Link>
               <Link to="/contact" className="hover:text-orange-400 transition-colors">
                 {t('footer.contact.link')}
               </Link>
